@@ -13,26 +13,26 @@
   },
   {
     "id": 3,
-    "name": "Teclado Mecánico Logitech",
-    "price": 89.50,
+    "name": "Teclado Mecanico Logitech",
+    "price": 89.5,
     "quantity": 30
   },
   {
     "id": 4,
-    "name": "Mouse Inalámbrico Microsoft",
+    "name": "Mouse Inalambrico Microsoft",
     "price": 29.99,
     "quantity": 50
   },
   {
     "id": 5,
     "name": "Silla Gamer Razer Iskur",
-    "price": 399.00,
+    "price": 399.0,
     "quantity": 5
   },
   {
     "id": 6,
     "name": "Disco Duro Externo Seagate 2TB",
-    "price": 75.00,
+    "price": 75.0,
     "quantity": 20
   },
   {
@@ -44,7 +44,7 @@
   {
     "id": 8,
     "name": "Smartphone Samsung Galaxy A54",
-    "price": 350.00,
+    "price": 350.0,
     "quantity": 8
   },
   {
@@ -52,11 +52,5 @@
     "name": "Tablet Apple iPad 10.2\"",
     "price": 429.99,
     "quantity": 6
-  },
-  {
-    "id": 10,
-    "name": "Audífonos Bluetooth Sony WH-CH720N",
-    "price": 119.99,
-    "quantity": 25
   }
 ]
