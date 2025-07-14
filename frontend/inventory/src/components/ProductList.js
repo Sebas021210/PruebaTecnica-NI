@@ -39,7 +39,7 @@ function Product_List() {
                 <Typography variant="h5" component="div" align="center">
                     Lista de productos
                 </Typography>
-                < AddProduct />
+                < AddProduct onAdd={fetchProducts} />
             </Box>
 
             <Box sx={{ px: 5 }}>
@@ -49,7 +49,7 @@ function Product_List() {
                             key={product.id}
                             secondaryAction={
                                 <Box sx={{ display: 'flex', gap: 1 }}>
-                                    <EditProduct productId={product.id} productName={product.name} productPrice={product.price} productQuantity={product.quantity} />
+                                    <EditProduct productId={product.id} productName={product.name} productPrice={product.price} productQuantity={product.quantity} onEdit={fetchProducts} />
                                     < DeleteProduct productId={product.id} onDeleted={fetchProducts} />
                                 </Box>
                             }

@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 
-function EditProduct({ productId, productName, productPrice, productQuantity }) {
+function EditProduct({ productId, productName, productPrice, productQuantity, onEdit }) {
     const [open, setOpen] = useState(false);
     const [formEditData, setFormEditData] = useState({
         name: "",
@@ -59,6 +59,7 @@ function EditProduct({ productId, productName, productPrice, productQuantity }) 
             }
             const data = await response.json();
             console.log('Product updated:', data);
+            onEdit();
             handleClose();
         } catch (error) {
             console.error('Error:', error);

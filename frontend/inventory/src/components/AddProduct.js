@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 
-function AddProduct() {
+function AddProduct({ onAdd }) {
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
@@ -54,6 +54,7 @@ function AddProduct() {
             }
             const data = await response.json();
             console.log('Product added:', data);
+            onAdd();
             setFormData({ name: "", price: "", quantity: "" });
             handleClose();
         } catch (error) {
