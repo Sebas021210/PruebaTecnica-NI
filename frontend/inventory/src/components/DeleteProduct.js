@@ -29,9 +29,11 @@ function DeleteProduct({ productId, onDeleted }) {
             }
             console.log('Product deleted successfully');
             onDeleted();
+            alert('Producto eliminado correctamente');
             handleClose();
         } catch (error) {
             console.error('Error:', error);
+            alert('Error al eliminar el producto');
         }
     }
 

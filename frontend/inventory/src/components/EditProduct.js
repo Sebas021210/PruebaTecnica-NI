@@ -60,9 +60,11 @@ function EditProduct({ productId, productName, productPrice, productQuantity, on
             const data = await response.json();
             console.log('Product updated:', data);
             onEdit();
+            alert('Producto actualizado correctamente');
             handleClose();
         } catch (error) {
             console.error('Error:', error);
+            alert('Error al actualizar el producto');
         }
     };
 

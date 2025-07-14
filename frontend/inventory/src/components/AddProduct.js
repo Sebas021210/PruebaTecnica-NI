@@ -56,9 +56,11 @@ function AddProduct({ onAdd }) {
             console.log('Product added:', data);
             onAdd();
             setFormData({ name: "", price: "", quantity: "" });
+            alert('Producto agregado exitosamente');
             handleClose();
         } catch (error) {
             console.error('Error:', error);
+            alert('Error al agregar el producto');
         }
     }
 
