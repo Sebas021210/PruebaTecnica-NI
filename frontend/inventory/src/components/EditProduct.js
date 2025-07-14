@@ -7,17 +7,22 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 
-function AddProduct() {
+function EditProduct({ productId, productName, productPrice, productQuantity }) {
     const [open, setOpen] = useState(false);
-    const [formData, setFormData] = useState({
+    const [formEditData, setFormEditData] = useState({
         name: "",
         price: "",
         quantity: ""
     });
 
     const handleClickOpen = () => {
+        setFormEditData({
+            name: productName,
+            price: productPrice,
+            quantity: productQuantity
+        });
         setOpen(true);
     };
 
@@ -27,7 +32,7 @@ function AddProduct() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({
+        setFormEditData((prev) => ({
             ...prev,
             [name]: value
         }));
@@ -35,42 +40,41 @@ function AddProduct() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newProduct = {
-            name: formData.name,
-            price: parseFloat(formData.price),
-            quantity: parseInt(formData.quantity)
+        const updatedProduct = {
+            name: formEditData.name,
+            price: parseFloat(formEditData.price),
+            quantity: parseInt(formEditData.quantity)
         };
 
         try {
-            const response = await fetch('http://localhost:8000/products/new', {
-                method: 'POST',
+            const response = await fetch(`http://localhost:8000/products/${productId}/`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(newProduct),
-            });
+                body: JSON.stringify(updatedProduct),
+            })
             if (!response.ok) {
-                throw new Error('Error adding product');
+                throw new Error('Error updating product');
             }
             const data = await response.json();
-            console.log('Product added:', data);
-            setFormData({ name: "", price: "", quantity: "" });
+            console.log('Product updated:', data);
             handleClose();
         } catch (error) {
             console.error('Error:', error);
         }
-    }
+    };
 
     return (
         <div>
-            <IconButton edge="end" aria-label="add" onClick={handleClickOpen}>
-                <AddIcon />
+            <IconButton edge="end" aria-label="edit" onClick={handleClickOpen}>
+                <EditIcon />
             </IconButton>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Agregar producto</DialogTitle>
+                <DialogTitle>Editar producto</DialogTitle>
                 <DialogContent sx={{ paddingBottom: 0 }}>
                     <DialogContentText>
-                        Ingresa los detalles del nuevo producto.
+                        Ingresa los nuevos detalles del producto.
                     </DialogContentText>
                     <form onSubmit={handleSubmit}>
                         <TextField
@@ -83,7 +87,7 @@ function AddProduct() {
                             type="text"
                             fullWidth
                             variant="standard"
-                            value={formData.name}
+                            value={formEditData.name}
                             onChange={handleChange}
                         />
                         <TextField
@@ -96,7 +100,7 @@ function AddProduct() {
                             fullWidth
                             variant="standard"
                             inputProps={{ step: "0.01" }}
-                            value={formData.price}
+                            value={formEditData.price}
                             onChange={handleChange}
                         />
                         <TextField
@@ -109,12 +113,12 @@ function AddProduct() {
                             fullWidth
                             variant="standard"
                             inputProps={{ step: "1", min: "0" }}
-                            value={formData.quantity}
+                            value={formEditData.quantity}
                             onChange={handleChange}
                         />
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
-                            <Button type="submit">Agregar</Button>
+                            <Button type="submit">Editar</Button>
                         </DialogActions>
                     </form>
                 </DialogContent>
@@ -123,4 +127,4 @@ function AddProduct() {
     );
 }
 
-export default AddProduct;
+export default EditProduct;

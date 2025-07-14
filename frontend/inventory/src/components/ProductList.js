@@ -49,7 +49,7 @@ function Product_List() {
                             key={product.id}
                             secondaryAction={
                                 <Box sx={{ display: 'flex', gap: 1 }}>
-                                    <EditProduct />
+                                    <EditProduct productId={product.id} productName={product.name} productPrice={product.price} productQuantity={product.quantity} />
                                     < DeleteProduct productId={product.id} onDeleted={fetchProducts} />
                                 </Box>
                             }
