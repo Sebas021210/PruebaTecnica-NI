@@ -4,12 +4,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import AddIcon from '@mui/icons-material/Add';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import EditIcon from '@mui/icons-material/Edit';
 import Box from "@mui/material/Box";
+import AddProduct from "./AddProduct";
+import EditProduct from "./EditProduct";
 import DeleteProduct from "./DeleteProduct";
 
 function Product_List() {
@@ -40,9 +39,7 @@ function Product_List() {
                 <Typography variant="h5" component="div" align="center">
                     Lista de productos
                 </Typography>
-                <IconButton edge="end" aria-label="delete">
-                    <AddIcon />
-                </IconButton>
+                < AddProduct />
             </Box>
 
             <Box sx={{ px: 5 }}>
@@ -52,10 +49,7 @@ function Product_List() {
                             key={product.id}
                             secondaryAction={
                                 <Box sx={{ display: 'flex', gap: 1 }}>
-                                    <IconButton edge="end" aria-label="delete">
-                                        <EditIcon />
-                                    </IconButton>
-
+                                    <EditProduct />
                                     < DeleteProduct productId={product.id} onDeleted={fetchProducts} />
                                 </Box>
                             }

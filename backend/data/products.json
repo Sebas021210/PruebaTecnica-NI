@@ -46,5 +46,11 @@
     "name": "Tablet Apple iPad 10.2\"",
     "price": 429.99,
     "quantity": 6
+  },
+  {
+    "id": 10,
+    "name": "Smartphone Samsung Galaxy A30",
+    "price": 250.0,
+    "quantity": 12
   }
 ]
